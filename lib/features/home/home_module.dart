@@ -1,10 +1,10 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:interdimensional_cable_registry/core/services/http_service.dart';
 import 'package:interdimensional_cable_registry/features/home/repositories/home_repository.dart';
-import 'package:interdimensional_cable_registry/features/home/viewmodels/character_details/character_details_cubit.dart';
-import 'package:interdimensional_cable_registry/features/home/viewmodels/home/home_cubit.dart';
-import 'package:interdimensional_cable_registry/features/home/views/character_details_page.dart';
-import 'package:interdimensional_cable_registry/features/home/views/home_page.dart';
+import 'package:interdimensional_cable_registry/features/home/pages/character_details/character_details_cubit.dart';
+import 'package:interdimensional_cable_registry/features/home/pages/home/home_cubit.dart';
+import 'package:interdimensional_cable_registry/features/home/pages/character_details/character_details_page.dart';
+import 'package:interdimensional_cable_registry/features/home/pages/home/home_page.dart';
 
 class HomeModule extends Module {
   @override

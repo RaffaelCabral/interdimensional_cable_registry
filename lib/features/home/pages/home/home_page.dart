@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:interdimensional_cable_registry/features/home/viewmodels/home/home_cubit.dart';
-import 'package:interdimensional_cable_registry/features/home/viewmodels/home/home_state.dart';
+import 'package:interdimensional_cable_registry/features/home/pages/home/home_cubit.dart';
+import 'package:interdimensional_cable_registry/features/home/pages/home/home_state.dart';
 import 'package:interdimensional_cable_registry/features/home/widgets/character_card.dart';
 import 'package:interdimensional_cable_registry/features/home/widgets/pagination_widget.dart';
 

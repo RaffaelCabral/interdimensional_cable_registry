@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:interdimensional_cable_registry/features/home/repositories/home_repository.dart';
-import 'package:interdimensional_cable_registry/features/home/viewmodels/home/home_state.dart';
+import 'package:interdimensional_cable_registry/features/home/pages/home/home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   final HomeRepository _homeRepository;

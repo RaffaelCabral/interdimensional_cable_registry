@@ -6,8 +6,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:interdimensional_cable_registry/features/home/enums/enums.dart';
 import 'package:interdimensional_cable_registry/features/home/models/character_model.dart';
-import 'package:interdimensional_cable_registry/features/home/viewmodels/character_details/character_details_cubit.dart';
-import 'package:interdimensional_cable_registry/features/home/viewmodels/character_details/character_details_state.dart';
+import 'package:interdimensional_cable_registry/features/home/pages/character_details/character_details_cubit.dart';
+import 'package:interdimensional_cable_registry/features/home/pages/character_details/character_details_state.dart';
 
 class CharacterDetailsPage extends StatefulWidget {
   final int characterId;

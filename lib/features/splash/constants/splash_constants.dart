@@ -17,12 +17,12 @@ class SplashConstants {
     dimensionPurple,
   ];
 
-  static const Duration portalDuration = Duration(milliseconds: 2000);
-  static const Duration textDuration = Duration(milliseconds: 2000);
-  static const Duration particleDuration = Duration(milliseconds: 4000);
-  static const Duration rickDuration = Duration(milliseconds: 2000);
-  static const Duration glitchDuration = Duration(milliseconds: 1000);
-  static const Duration finalDuration = Duration(milliseconds: 1000);
+  static const Duration portalDuration = Duration(milliseconds: 3500);
+  static const Duration textDuration = Duration(milliseconds: 3000);
+  static const Duration particleDuration = Duration(milliseconds: 6000);
+  static const Duration rickDuration = Duration(milliseconds: 3500);
+  static const Duration glitchDuration = Duration(milliseconds: 1500);
+  static const Duration finalDuration = Duration(milliseconds: 2000);
 
   static const int backgroundParticleCount = 30;
   static const int portalParticleCount = 12;
@@ -38,5 +38,5 @@ class SplashConstants {
   static const String titleSub = 'CABLE REGISTRY';
   static const String subtitle = 'Loading infinite realities...';
 
-  static const List<int> animationDelays = [1500, 500, 1000, 2000, 1000];
+  static const List<int> animationDelays = [2500, 1000, 1500, 3000, 2000];
 }

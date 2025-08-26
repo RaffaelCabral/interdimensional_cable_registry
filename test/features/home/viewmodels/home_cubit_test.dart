@@ -2,8 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:interdimensional_cable_registry/features/home/repositories/home_repository.dart';
-import 'package:interdimensional_cable_registry/features/home/viewmodels/home/home_cubit.dart';
-import 'package:interdimensional_cable_registry/features/home/viewmodels/home/home_state.dart';
+import 'package:interdimensional_cable_registry/features/home/pages/home/home_cubit.dart';
+import 'package:interdimensional_cable_registry/features/home/pages/home/home_state.dart';
 import 'package:interdimensional_cable_registry/features/home/models/character_model.dart';
 import 'package:interdimensional_cable_registry/features/home/models/api_info.dart';
 import 'package:interdimensional_cable_registry/features/home/models/origin_and_location_model.dart';
@@ -50,7 +50,7 @@ void main() {
       image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
       episode: [
         'https://rickandmortyapi.com/api/episode/1',
-        'https://rickandmortyapi.com/api/episode/2'
+        'https://rickandmortyapi.com/api/episode/2',
       ],
       url: 'https://rickandmortyapi.com/api/character/1',
       created: '2017-11-04T18:48:46.250Z',
@@ -67,8 +67,9 @@ void main() {
       blocTest<HomeCubit, HomeState>(
         'should emit [loading, success] when getCharacters succeeds',
         build: () {
-          when(() => mockRepository.getCharacters(page: 1))
-              .thenAnswer((_) async => tCharacters);
+          when(
+            () => mockRepository.getCharacters(page: 1),
+          ).thenAnswer((_) async => tCharacters);
           return homeCubit;
         },
         act: (cubit) => cubit.getCharacters(page: 1),
@@ -88,8 +89,9 @@ void main() {
       blocTest<HomeCubit, HomeState>(
         'should use page 1 as default when no page is provided',
         build: () {
-          when(() => mockRepository.getCharacters(page: 1))
-              .thenAnswer((_) async => tCharacters);
+          when(
+            () => mockRepository.getCharacters(page: 1),
+          ).thenAnswer((_) async => tCharacters);
           return homeCubit;
         },
         act: (cubit) => cubit.getCharacters(),
@@ -109,8 +111,9 @@ void main() {
       blocTest<HomeCubit, HomeState>(
         'should emit [loading, error] when getCharacters fails',
         build: () {
-          when(() => mockRepository.getCharacters(page: 1))
-              .thenThrow(Exception('Network error'));
+          when(
+            () => mockRepository.getCharacters(page: 1),
+          ).thenThrow(Exception('Network error'));
           return homeCubit;
         },
         act: (cubit) => cubit.getCharacters(page: 1),
@@ -129,8 +132,9 @@ void main() {
       blocTest<HomeCubit, HomeState>(
         'should call getCharacters with next page when current page is less than total pages',
         build: () {
-          when(() => mockRepository.getCharacters(page: 2))
-              .thenAnswer((_) async => tCharacters);
+          when(
+            () => mockRepository.getCharacters(page: 2),
+          ).thenAnswer((_) async => tCharacters);
           return homeCubit;
         },
         seed: () => HomeState(
@@ -171,7 +175,9 @@ void main() {
         act: (cubit) => cubit.nextPage(),
         expect: () => [],
         verify: (_) {
-          verifyNever(() => mockRepository.getCharacters(page: any(named: 'page')));
+          verifyNever(
+            () => mockRepository.getCharacters(page: any(named: 'page')),
+          );
         },
       );
 
@@ -186,7 +192,9 @@ void main() {
         act: (cubit) => cubit.nextPage(),
         expect: () => [],
         verify: (_) {
-          verifyNever(() => mockRepository.getCharacters(page: any(named: 'page')));
+          verifyNever(
+            () => mockRepository.getCharacters(page: any(named: 'page')),
+          );
         },
       );
     });
@@ -195,8 +203,9 @@ void main() {
       blocTest<HomeCubit, HomeState>(
         'should call getCharacters with previous page when current page is greater than 1',
         build: () {
-          when(() => mockRepository.getCharacters(page: 1))
-              .thenAnswer((_) async => tCharacters);
+          when(
+            () => mockRepository.getCharacters(page: 1),
+          ).thenAnswer((_) async => tCharacters);
           return homeCubit;
         },
         seed: () => HomeState(
@@ -233,7 +242,9 @@ void main() {
         act: (cubit) => cubit.previousPage(),
         expect: () => [],
         verify: (_) {
-          verifyNever(() => mockRepository.getCharacters(page: any(named: 'page')));
+          verifyNever(
+            () => mockRepository.getCharacters(page: any(named: 'page')),
+          );
         },
       );
     });
@@ -242,8 +253,9 @@ void main() {
       blocTest<HomeCubit, HomeState>(
         'should call getCharacters with specified page when page is valid',
         build: () {
-          when(() => mockRepository.getCharacters(page: 5))
-              .thenAnswer((_) async => tCharacters);
+          when(
+            () => mockRepository.getCharacters(page: 5),
+          ).thenAnswer((_) async => tCharacters);
           return homeCubit;
         },
         seed: () => HomeState(
@@ -280,7 +292,9 @@ void main() {
         act: (cubit) => cubit.goToPage(0),
         expect: () => [],
         verify: (_) {
-          verifyNever(() => mockRepository.getCharacters(page: any(named: 'page')));
+          verifyNever(
+            () => mockRepository.getCharacters(page: any(named: 'page')),
+          );
         },
       );
 
@@ -299,7 +313,9 @@ void main() {
         act: (cubit) => cubit.goToPage(15),
         expect: () => [],
         verify: (_) {
-          verifyNever(() => mockRepository.getCharacters(page: any(named: 'page')));
+          verifyNever(
+            () => mockRepository.getCharacters(page: any(named: 'page')),
+          );
         },
       );
 
@@ -314,7 +330,9 @@ void main() {
         act: (cubit) => cubit.goToPage(2),
         expect: () => [],
         verify: (_) {
-          verifyNever(() => mockRepository.getCharacters(page: any(named: 'page')));
+          verifyNever(
+            () => mockRepository.getCharacters(page: any(named: 'page')),
+          );
         },
       );
     });
@@ -325,8 +343,9 @@ void main() {
       blocTest<HomeCubit, HomeState>(
         'should emit [loading, success] when getCharacterById succeeds',
         build: () {
-          when(() => mockRepository.getCharacterById(tCharacterId))
-              .thenAnswer((_) async => tCharacter);
+          when(
+            () => mockRepository.getCharacterById(tCharacterId),
+          ).thenAnswer((_) async => tCharacter);
           return homeCubit;
         },
         act: (cubit) => cubit.getCharacterById(tCharacterId),
@@ -345,8 +364,9 @@ void main() {
       blocTest<HomeCubit, HomeState>(
         'should emit [loading, error] when getCharacterById fails',
         build: () {
-          when(() => mockRepository.getCharacterById(tCharacterId))
-              .thenThrow(Exception('Character not found'));
+          when(
+            () => mockRepository.getCharacterById(tCharacterId),
+          ).thenThrow(Exception('Character not found'));
           return homeCubit;
         },
         act: (cubit) => cubit.getCharacterById(tCharacterId),

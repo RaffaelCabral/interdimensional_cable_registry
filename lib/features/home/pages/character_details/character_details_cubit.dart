@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:interdimensional_cable_registry/features/home/repositories/home_repository.dart';
-import 'package:interdimensional_cable_registry/features/home/viewmodels/character_details/character_details_state.dart';
+import 'package:interdimensional_cable_registry/features/home/pages/character_details/character_details_state.dart';
 
 class CharacterDetailsCubit extends Cubit<CharacterDetailsState> {
   final HomeRepository _homeRepository;
