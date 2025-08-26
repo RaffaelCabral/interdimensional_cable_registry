@@ -526,19 +526,7 @@ class _CharacterDetailsPageState extends State<CharacterDetailsPage>
           SizedBox(height: 24.h),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
-            // decoration: BoxDecoration(
-            //   gradient: LinearGradient(
-            //     colors: [
-            //       _rickMortyGreen.withOpacity(0.2),
-            //       _rickMortyBlue.withOpacity(0.2),
-            //     ],
-            //   ),
-            //   borderRadius: BorderRadius.circular(15.r),
-            //   border: Border.all(
-            //     color: _rickMortyGreen.withOpacity(0.5),
-            //     width: 1,
-            //   ),
-            // ),
+
             child: Text(
               character.name,
               style: TextStyle(

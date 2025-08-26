@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:interdimensional_cable_registry/features/splash/view/splash_page.dart';
 

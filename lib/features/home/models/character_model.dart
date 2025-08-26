@@ -89,10 +89,8 @@ class Character {
 
   factory Character.fromMap(Map<String, dynamic> map) {
     final statusString = map['status']?.toString() ?? '';
-    print('DEBUG: Status recebido da API: "$statusString"');
 
     final parsedStatus = _parseStatus(statusString);
-    print('DEBUG: Status convertido para enum: $parsedStatus');
 
     return Character(
       id: map['id'] as int,
