@@ -25,6 +25,7 @@ class _CharacterDetailsPageState extends State<CharacterDetailsPage>
   late Animation<double> _fadeAnimation;
   late Animation<Offset> _slideAnimation;
   late Animation<double> _portalAnimation;
+  late CharacterDetailsCubit viewModel;
 
   static const Color _spaceDark = Color(0xFF0A0A0A);
   static const Color _rickMortyGreen = Color(0xFF44C855);
@@ -37,6 +38,9 @@ class _CharacterDetailsPageState extends State<CharacterDetailsPage>
   @override
   void initState() {
     super.initState();
+
+    viewModel = Modular.get<CharacterDetailsCubit>();
+    viewModel.getCharacterDetails(widget.characterId);
 
     _fadeController = AnimationController(
       duration: const Duration(milliseconds: 800),
@@ -84,10 +88,9 @@ class _CharacterDetailsPageState extends State<CharacterDetailsPage>
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: Modular.get<CharacterDetailsCubit>()
-        ..getCharacterDetails(widget.characterId),
-      child: BlocBuilder<CharacterDetailsCubit, CharacterDetailsState>(
+    return Scaffold(
+      body: BlocBuilder<CharacterDetailsCubit, CharacterDetailsState>(
+        bloc: viewModel,
         builder: (context, state) {
           return Scaffold(
             backgroundColor: _spaceDark,
