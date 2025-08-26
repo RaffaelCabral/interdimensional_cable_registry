@@ -3,12 +3,13 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:interdimensional_cable_registry/features/home/models/origin_and_location_model.dart';
 import 'package:interdimensional_cable_registry/features/home/models/api_info.dart';
+import 'package:interdimensional_cable_registry/features/home/enums/enums.dart';
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class Character {
   final int id;
   final String name;
-  final String status;
+  final CharStatus status;
   final String species;
   final String type;
   final String gender;
@@ -39,7 +40,7 @@ class Character {
   Character copyWith({
     int? id,
     String? name,
-    String? status,
+    CharStatus? status,
     String? species,
     String? type,
     String? gender,
@@ -72,7 +73,7 @@ class Character {
     return <String, dynamic>{
       'id': id,
       'name': name,
-      'status': status,
+      'status': status.name,
       'species': species,
       'type': type,
       'gender': gender,
@@ -87,12 +88,18 @@ class Character {
   }
 
   factory Character.fromMap(Map<String, dynamic> map) {
+    final statusString = map['status']?.toString() ?? '';
+    print('DEBUG: Status recebido da API: "$statusString"');
+
+    final parsedStatus = _parseStatus(statusString);
+    print('DEBUG: Status convertido para enum: $parsedStatus');
+
     return Character(
       id: map['id'] as int,
       url: map['url']?.toString() ?? '',
       created: map['created']?.toString() ?? '',
       name: map['name']?.toString() ?? '',
-      status: map['status']?.toString() ?? '',
+      status: parsedStatus,
       species: map['species']?.toString() ?? '',
       type: map['type']?.toString() ?? '',
       gender: map['gender']?.toString() ?? '',
@@ -105,6 +112,19 @@ class Character {
       image: map['image']?.toString() ?? '',
       episode: List<String>.from((map['episode'] as List? ?? [])),
     );
+  }
+
+  static CharStatus _parseStatus(String status) {
+    switch (status.toLowerCase()) {
+      case 'alive':
+        return CharStatus.alive;
+      case 'dead':
+        return CharStatus.dead;
+      case 'unknown':
+        return CharStatus.unknown;
+      default:
+        return CharStatus.unknown;
+    }
   }
 
   String toJson() => json.encode(toMap());

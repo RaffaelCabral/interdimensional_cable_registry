@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:interdimensional_cable_registry/features/home/home_module.dart';
+import 'package:interdimensional_cable_registry/features/splash/splash_module.dart';
 import 'core/services/http_service.dart';
 
 class AppModule extends Module {
@@ -10,7 +11,7 @@ class AppModule extends Module {
 
   @override
   void routes(r) {
-    r.redirect('/', to: '/home');
+    r.module('/', module: SplashModule());
     r.module('/home', module: HomeModule());
   }
 }

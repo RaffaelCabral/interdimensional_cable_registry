@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:interdimensional_cable_registry/features/home/enums/enums.dart';
 
 class CharacterCard extends StatelessWidget {
   final String imageUrl;
   final String name;
-  final String? status;
+  final CharStatus? status;
   final String? species;
   final String? lastKnownLocation;
   final String? firstSeenIn;
@@ -78,6 +79,37 @@ class CharacterCard extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
+                      if (status != null) ...[
+                        SizedBox(height: 8.h),
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 8.w,
+                            vertical: 4.h,
+                          ),
+                          decoration: BoxDecoration(
+                            color: _getStatusColor(status!),
+                            borderRadius: BorderRadius.circular(12.r),
+                          ),
+                          child: Text(
+                            status!.name,
+                            style: TextStyle(
+                              fontSize: 12.spMax,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                      if (species != null) ...[
+                        SizedBox(height: 4.h),
+                        Text(
+                          species!,
+                          style: TextStyle(
+                            fontSize: 12.spMax,
+                            color: Colors.grey.shade400,
+                          ),
+                        ),
+                      ],
                     ],
                   ),
                 ),
@@ -87,5 +119,16 @@ class CharacterCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Color _getStatusColor(CharStatus status) {
+    switch (status) {
+      case CharStatus.alive:
+        return const Color(0xFF57EBA1); // Green
+      case CharStatus.dead:
+        return const Color(0xFFEB5757); // Red
+      case CharStatus.unknown:
+        return const Color(0xFFF2C94C); // Yellow
+    }
   }
 }
